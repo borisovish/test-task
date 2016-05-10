@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"app.css","sourcesContent":[".permission-list,.role-list,.user-list{\n    list-style: none;\n    margin-left: 0;\n    padding-left: 0;\n}"],"sourceRoot":"/source/"}
