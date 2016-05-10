@@ -46,6 +46,7 @@ class GetDataProviderXML extends Command
             $api = new GetDataFromApi($file);
         } catch (Exception $e) {
             // Место для евента
+            Log::warning(' Error new for class GetDataFromApi');
             return;
         }
         foreach ($api->GetData() as $order) {

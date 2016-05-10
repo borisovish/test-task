@@ -45,6 +45,7 @@ class GetDataProviderCSV extends Command
         try {
             $api = new GetDataFromApi($file);
         } catch (Exception $e) {
+            Log::warning(' Error new for class GetDataFromApi');
             return;
         }
         foreach ($api->GetData() as $order) {
