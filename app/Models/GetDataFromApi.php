@@ -6,7 +6,10 @@ use App\Models\GetXMLType;
 
 class GetDataFromApi extends GetDataFromApiStrategy
 {
-
+/**
+ * [__construct  initializes a class, and adds it to the variable date ]
+ * @param [type] $file [file in format csv OR xml]
+ */
     public function __construct($file)
     {
         $this->_file = $file;
@@ -20,13 +23,18 @@ class GetDataFromApi extends GetDataFromApiStrategy
         }
 
     }
-
+/**
+ * [GetFileType Returns the file type based on its expansion]
+ */
     protected function GetFileType()
     {
         $info             = new \SplFileInfo($this->_file);
         $this->_extension = $info->getExtension();
     }
 
+/**
+ * [GetData This method gets the data from the file]
+ */
     public function GetData()
     {
         return $this->_data->GenerateData($this->_file);

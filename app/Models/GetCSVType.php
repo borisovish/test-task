@@ -4,7 +4,10 @@ namespace App\Models;
 
 class GetCSVType extends GetDataFromApiStrategy
 {
-
+/**
+ * [GenerateData description]
+ * @param [type] $file [patch &file format csv ]
+ */
     public function GenerateData($file)
     {
         $arfile = \Excel::load($file, function ($reader) {

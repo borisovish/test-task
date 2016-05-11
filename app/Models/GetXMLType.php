@@ -4,6 +4,10 @@ namespace App\Models;
 
 class GetXMLType extends GetDataFromApiStrategy
 {
+ /**
+ * [GenerateData description]
+ * @param [type] $file [patch &file format xml ]
+ */
     public function GenerateData($file)
     {
         $xml = simplexml_load_file($file);

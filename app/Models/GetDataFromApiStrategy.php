@@ -1,6 +1,9 @@
 <?php
 namespace App\Models;
-
+/**
+ * The base class receives data files in XML OR CSV.
+   Return array of orders
+ */
 abstract class GetDataFromApiStrategy
 {
 
