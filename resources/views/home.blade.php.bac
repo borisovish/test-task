@@ -41,35 +41,30 @@
                     mtype: "post",
                     datatype: "json",
                     height: 500,
+                    colNames:['id заказа в магазине', 'id магазина', 'сумма заказа', 'валюта' ,'статус заказа', 'время создания заказа  ', 'Примечание' ],
 
                     colModel:[
-                            {name: 'id', index: 'id', width: 40,editable: false,
+                            {name: 'order_id', index: 'title_move', width: 30,editable: false,
                                searchoptions: {sopt: ['eq', 'ne', 'cn', 'nc']},
                             },
-                            {name: 'id магазина', index: 'advcampaign_id', width: 40,editable: false,
+                            {name: 'order_payment', index: 'title_move', width: 80,editable: false,
                                searchoptions: {sopt: ['eq', 'ne', 'cn', 'nc']},
                             },
-                            {name: 'id заказа', index: 'order_id', width: 80,editable: false,
+
+                            {name: 'cart', index: 'title_move', width: 80,editable: false,
                                searchoptions: {sopt: ['eq', 'ne', 'cn', 'nc']},
                             },
-                            {name: 'сумма заказа', index: 'cart', width: 40,editable: false,
-                               searchoptions: {sopt: ['eq', 'ne', 'le', 'ge']},
-                            },
-                            {name: 'Валюта', index: 'currency', width: 30,editable: false,
+                            {name: 'currency', index: 'excode_move', width: 30,editable: false,
                                searchoptions: {sopt: ['cn', 'eq', 'ne',  'nc']},
                             },
-                            {name: 'статус заказа', index: 'status', width: 50,editable: false,
+                            {name: 'status', index: 'barcode_move', width: 50,editable: false,
                                searchoptions: {sopt: ['cn', 'eq', 'ne',  'nc']},
                             },
                             {
-                              label: "время создания заказа",
                               name: 'action_date',
                               width: 50,
                               sorttype: 'date',
-                              formatter: 'date',
-                              srcformat: 'Y-m-d ',
                               stype: 'text',
-                              newformat: 'd.m.yy',
                               editable: false,
                               searchoptions: {
                                   dataInit: function(element) {
@@ -84,14 +79,17 @@
                                   sopt: ['gt', 'lt']
                               }
                             },
-                            {name: 'Примечание', index: 'description', editable: true, edittype: "textarea",
+                            {name: 'description', index: 'description', editable: true, edittype: "textarea",
                                  editoptions: {rows: "2", cols: "20"},
                                  sortable: true, searchoptions:
                                  {sopt: ['cn', 'nc']}
                             },
+
                     ],
 
                     cmTemplate: { autoResizable: true, editable: false },
+                    // autoResizing: { compact: true },
+                    // autoresizeOnLoad: true,
                     iconSet: "fontAwesome",
                     guiStyle: "bootstrap",
                     rowNum: '{{env("rowNum",20)}}',
@@ -110,7 +108,7 @@
                     // pager: '#jqgrid-pager',
                     sortname: 'id',
                     sortorder:'{{env("sortorder","ASC")}}',
-                    multiselect: false,
+                    multiselect: true,
                     gridview: false,
                     "postData":{
                        "_token":"{{csrf_token()}}"
@@ -128,7 +126,9 @@
                         labelswidth: ""
                     },
                     searching: {
+                        //showQuery: true,
                         multipleSearch: true,
+                        // multipleGroup: true,
                         closeOnEscape: true,
                         searchOnEnter: true,
                         searchOperators: true,
@@ -138,6 +138,11 @@
                         width: 550
                     },
                     singleSelectClickMode: "selectonly", // optional setting
+                    // ondblClickRow: function (rowid) {
+                    //     $(this).jqGrid("editGridRow", rowid);
+                    // },
+
+                    // caption: "Demonstrats loadFilterDefaults:true option"
         });
         jQuery(grid_selector).jqGrid('gridResize');
 
@@ -155,10 +160,12 @@
         );
         jQuery(grid_selector).jqGrid('navSeparatorAdd', {sepclass : "ui-separator",sepcontent: ''});
 
-        // jQuery(grid_selector).jqGrid('filterToolbar');
+        jQuery(grid_selector).jqGrid('filterToolbar');
+        // jQuery(grid_selector).jqGrid('columnChooser');
 
         $(window).triggerHandler('resize.jqGrid');
       jQuery(".ui-pg-div").removeClass().addClass("btn btn-xs btn-default");
+      jQuery("#gs_jqgrid_title_good").attr("placeholder", "Поиск по названию, коду, barcode");
 
 
     });

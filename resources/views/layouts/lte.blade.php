@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+       <link rel="stylesheet" href="{{asset('/css/ui.jqgrid.css')}}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -220,6 +221,7 @@ desired effect
                         </li>
                         @endcan
                     @endif
+                    <li><a href="{{ route('main::index') }}"><i class="fa fa-bars"></i><span>Заказы</span></a>
                 </ul>
         </section>
         <!-- /.sidebar -->
@@ -259,7 +261,12 @@ desired effect
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{{url('/js/all.js')}}"></script>
+
+ @section('js')
+        @yield('js')
+        @show
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

@@ -11,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
           type='text/css'>
     <link rel="stylesheet" href="{{url('/css/all.css')}}">
+     <link rel="stylesheet" href="{{asset('/css/ui.jqgrid.css')}}">
 
 
 </head>
@@ -83,5 +84,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="{{url('/js/all.js')}}"></script>
 {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+ @section('js')
+        @yield('js')
+        @show
+
 </body>
 </html>
